@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block css %}
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/style_registro.css">
+{% endblock %}
+{% block title %}Nuevo usuario{% endblock %}
+
+
+{% block content %}
+<section class="registro">
+	<h1>Registro nuevo Usuario</h1>
+	<form id='formulario' method='post' action=''>{% csrf_token %}
+		<div id="formulario">
+			{{ formulario.as_br }}
+			<p><input type='submit' value='Registrar'/></p></li>
+		</div>
+
+	</form>
+</section>
+{% endblock %}
