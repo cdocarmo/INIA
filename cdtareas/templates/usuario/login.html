@@ -1,20 +1,23 @@
 {% extends 'base.html' %}
-{% block css %}
-	<link rel="stylesheet" href="{{ STATIC_URL }}css/style_login.css">
-{% endblock %}
 {% block title %}Nuevo usuario{% endblock %}
 
 {% block content %}
-    <div class="login">
+    <div class="box">
       <h1>Acceder a la Aplicacion</h1>
         <div id="errores">
-            {% if error %}
-                <p>Usuario o contraseña incorrecta, intente nuevamente.</p>
+            {% if error %}                
+               {{ error }} 
             {% endif %}
         </div>
-    	<form id='formulario' method='post' action=''>{% csrf_token %}
-		<p>{{formulario.username}}</p>
-        <p>{{formulario.password}}</p>
+    	<form class="form-horizontal" method='post' action=''>{% csrf_token %}
+            <div class="control-group">
+                <div class="controls">
+        		  <p>{{formulario.username}}</p>
+                </div>
+                <div class="controls">
+                    <p>{{formulario.password1}}</p>
+                </div>
+            </div>
     		<p><input type='submit' value='Acceder'/></p>
     	</form>
     </div>
