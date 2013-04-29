@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Nueva Tarea{% endblock %}
+
+
+{% block content %}
+<section class="box">
+	<h1>Registro nueva Tarea</h1>
+	<form class="form-horizontal" method='post' action=''>{% csrf_token %}
+		{% if formulario.fecha.errors %}
+	    	<div class="lert alert-error">
+	    		{{ formulario.fecha.errors|join:"; " }}
+	    	</div>
+		{% endif %}	
+		<div class="control-group">
+			<label class="control-label" >{{ formulario.fecha.label_tag }}</label>
+			<div class="controls">
+				{{ formulario.fecha }}
+			</div>
+		</div>
+		{% if formulario.nombre.errors %}
+	    	<div class="lert alert-error">
+	    		{{ formulario.nombre.errors|join:"; " }}
+	    	</div>
+		{% endif %}	
+		<div class="control-group">
+			<label class="control-label" >{{ formulario.nombre.label_tag }}</label>
+			<div class="controls">
+				{{ formulario.nombre }}
+			</div>
+		</div>
+
+		{% if formulario.detalle.errors %}
+	    	<div class="lert alert-error">
+	    		{{ formulario.detalle.errors|join:"; " }}
+	    	</div>
+		{% endif %}	
+		<div class="control-group">
+			<label class="control-label" >{{ formulario.detalle.label_tag }}</label>
+			<div class="controls">
+				{{ formulario.detalle }}
+			</div>
+		</div>
+
+
+		{% if formulario.aquien.errors %}
+	    	<div class="lert alert-error">
+	    		{{ formulario.aquien.errors|join:"; " }}
+	    	</div>
+		{% endif %}	
+		<div class="control-group">
+			<label class="control-label" >Destinatario</label>
+			<div class="controls">
+				{{ formulario.aquien }}
+			</div>
+		</div>
+
+		<p><input type='submit' value='Guardar'/></p>
+	</form>
+</section>
+
+{% endblock %}

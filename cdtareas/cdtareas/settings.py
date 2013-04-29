@@ -96,7 +96,13 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'dashboard',
+    'tareas',
+    'userprofile',
 )
+
+AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

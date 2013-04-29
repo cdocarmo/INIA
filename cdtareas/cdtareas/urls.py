@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^register/$','dashboard.views.nuevo_usuario', name='nuevo-usuario'),
     url(r'^login/$','dashboard.views.ingresar', name='ingresar'),
     url(r'^logout/$', 'dashboard.views.cerrar', name='cerrar'),
+    url(r'^new/$', 'tareas.views.nueva_tarea', name='nueva-tarea'),
     # Examples:
     # url(r'^$', 'cdmanager.views.home', name='home'),
     # url(r'^cdmanager/', include('cdmanager.foo.urls')),
