@@ -1,0 +1,34 @@
+{% extends "base2.html" %}
+{% load i18n %}
+
+{% block title %}Detalle Tarea{% endblock %}
+
+{% block content %}
+	<div class="boxTarea">
+		<div id="tarea_data">
+		    <h1>Detalle Tarea</h1>
+			<p class="items"><h2>{{ tarea.nombre }}</h2></p>
+		    <p class="items"><strong>{% trans "Fecha" %}: </strong> {{ tarea.fecha.date }}</p>
+		    <p class="items"><strong>{% trans "Descripcion" %}: </strong> {{ tarea.detalle }}</p>
+			<p class="items"><strong>{% trans "Solicitante" %}: </strong>{{ tarea.dquien }}</p>
+		</div>
+		<div id="comenta">
+	    	<form class="form-horizontal" method='post' action=''>{% csrf_token %}
+
+				{% if form.comentario.errors %}
+			    	<div class="lert alert-error">
+			    		{{ form.comentario.errors|join:"; " }}
+			    	</div>
+				{% endif %}	
+				<div class="control-group">
+					<label class="control-label" >{{ form.comentario.label_tag }}</label>
+					<div class="controls">
+						{{ form.comentario }}
+					</div>
+				</div>	    		
+	    		<p><input type='submit' value='Comentario'/></p>
+	    	</form>
+		</div>
+	</div>	
+
+{% endblock %}

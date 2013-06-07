@@ -1,0 +1,75 @@
+{% if tareas|length %}
+	<table class="table table-striped">
+       <thead>
+            <tr>
+              	<th>Fecha</th>
+              	<th>Tarea</th>
+              	<th>Detalle</th>
+				<th>Asignada</th>
+            </tr>
+      	</thead>
+		<tbody>
+			{% for tarea in tareas %}
+				<tr>
+					<td>{{ tarea.fecha.date|date:"j F Y" }}</td>
+                  	<td><a  href="{% url "detalle-tarea" tarea.slug %}"> {{ tarea.nombre }}</a></td>
+					<td>{{ tarea.detalle|truncatewords:"4" }}</td>
+					<td>{{ tarea.aquien }}</td>
+
+					<td>
+						<a class="iconito-eye" href="{% url "detalle-tarea" tarea.slug %}">&nbsp;</a>
+                	</td>
+					<td>
+						<span class="iconito-close">&nbsp;</span><a href="#">&nbsp;</a>
+                	</td>   					
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<div class="pagination">
+	    <ul>
+	        {% if tareas.has_previous %}
+            	<li><a href="?page={{ tareas.previous_page_number }}">&laquo;</a></li>
+	        {% endif %}
+
+	        {% for page in tareas.paginator.page_range %}
+	            {% if page %}
+	                {% ifequal page tareas.number %}
+	                    <li><a href="#">{{ page }}</a><li>
+	                {% else %}
+	                    <li><a href="?page={{ page }}">{{ page }}</a></li>
+	                {% endifequal %}
+	            {% else %}
+	                <li><a href="#">...</a><li>
+	            {% endif %}
+	        {% endfor %}
+
+	        {% if tareas.has_next %}
+	            <li><a href="?page={{ tareas.next_page_number }}">&raquo;</a></li>
+	        {% endif %}
+	    </ul>
+	</div>
+
+{% else %}
+	<div class="note">
+		Por el Momento no tienes tareas asignadas.
+	</div>			
+{% endif %}	
+{% block js %}
+	<script type="text/javascript">  
+		$(document).ready(function(){  
+		    $(".iconito-eye").fancybox({  
+		        'autoScale'     : false,  
+		        'transitionIn'      : 'none',  
+		        'transitionOut'     : 'none',
+		        'type'          : 'iframe'  
+		    });  
+		    $(".verT").fancybox({  
+		        'autoScale'     : false,  
+		        'transitionIn'      : 'none',  
+		        'transitionOut'     : 'none',
+		        'type'          : 'iframe'  
+		    });  		    
+		});  
+	</script>  
+{% endblock %}

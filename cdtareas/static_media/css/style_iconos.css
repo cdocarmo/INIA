@@ -1,0 +1,5 @@
+@font-face{font-family:'tarea';src:url("fonts/tarea.eot");src:url("fonts/tarea.eot?#iefix") format('embedded-opentype'),url("fonts/tarea.woff") format('woff'),url("fonts/tarea.ttf") format('truetype'),url("fonts/tarea.svg#tarea") format('svg');font-weight:normal;font-style:normal}
+[data-icon]:before{font-family:'tarea';content:attr(data-icon);speak:none;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased}
+.iconito-checkmark,.iconito-eye{font-family:'tarea';speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased}
+.iconito-checkmark:before{content:"\e000"}
+.iconito-eye:before{content:"\e001"}
