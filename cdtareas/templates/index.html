@@ -1,32 +1,29 @@
 {% extends "base.html" %}
-{%block title%}CD Manager{% endblock %}
+{%block title%}CD Tareas{% endblock %}
 
 {% block content %}
 <!--
     <input name="submit" type="submit" class="btn" value="Entrar" />
 -->
-    <section style="padding-bottom:300px">
-    <div class="main_view">
-        <div class="window">
+    <section>
+	    <div class="main_view">
+	        <div class="boxMain">
+				<h1 id="TituloTab">Lista de Tareas Pendientes</h1>
+	        	<div id="tabs">
+				  <ul>
+				    <li id="tab1"><a href="#tabs-1">Tareas Pendientes</a></li>
+				    <li id="tab2"><a href="#tabs-2">Tareas Solicitadas</a></li>
+				  </ul>
 
-		{% if tareas|length %}   
-
-			{% for tarea in tareas %}
-		   		<ul class="resultado">
-		   			<li class="resultado-nombre">
-		   				<h4 class="resultado-dato">
-		   					<a  href="#"> {{ tarea.nombre }}</a>
-		   				</h4>
-		   			</li>
-		   		</ul>
-			{% endfor %}
-		{% else %}
-			<div class="note">
-				Lo sentimos, tu b&uacute;squeda no obtuvo resultados.
-			</div>
-		{% endif %}   		
-        </div>
-    </div>
+				  <div id="tabs-1">					
+				  </div>
+				  <div id="tabs-2">
+				  </div>
+				</div>			  
+	        	
+	        </div>
+	    </div>
     </section>
-
 {% endblock %}
+
+

@@ -33,3 +33,13 @@ class Tarea(models.Model):
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.aquien.user.username + "-" + self.nombre)
 		super(Tarea, self).save(*args, **kwargs)		
+
+
+class ComentarioTarea(models.Model):
+	comentario = models.TextField()
+	usuario = models.ForeignKey(UserProfile, related_name='Comenta')
+	fecha = models.DateTimeField(auto_now=True)
+	tarea = models.ForeignKey(Tarea, related_name='Tarea')
+
+	def __unicode__(self):
+		return self.comentario	

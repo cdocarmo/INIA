@@ -11,17 +11,18 @@ import datetime
 
 class TareaForm(forms.Form):
 
-	fecha = forms.DateField(label='Fecha', widget=SelectDateWidget(
-		years=range(datetime.date.today().year,2000,-1), 
-		attrs={'class':'dates'}), required=True)
+	fecha = forms.DateField(label='Fecha', 
+		widget=forms.TextInput(
+		attrs={'class':'dates', }), required=True)
 
 
 	nombre = forms.CharField(label=_(u'Nombre'), max_length=30, 
                                widget=forms.TextInput(
-                               attrs={'class':'input-text'}),)
+                               attrs={'class':'input-text'}),
+                               required=True)
 
 	detalle = forms.CharField(label=u"Tarea", 
-                            	required=True, 
+                            	required=False, 
                           		widget=forms.Textarea(
                           		attrs ={'class':'txt-area', 
                                         'cols': '70', 'rows': '3'}))
@@ -35,3 +36,9 @@ class TareaForm(forms.Form):
 		self.fields['aquien'].queryset = UserProfile.objects.filter(user__is_active=True)
 
 
+class ComentarioForm(forms.Form):
+	comentario = forms.CharField(label=u"Comentario", 
+                            	required=False, 
+                          		widget=forms.Textarea(
+                          		attrs ={'class':'txt-area', 
+                                        'cols': '70', 'rows': '3'}))
